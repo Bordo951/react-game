@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Game from './Game';
+import Main from "./Main";
 
 ReactDOM.render(
-    <Game />,
-    document.getElementById('root')
+    <Main/>,
+    document.getElementById("root")
 );
 
 
