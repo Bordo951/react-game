@@ -1,6 +1,6 @@
 import React from 'react';
 import Square from './Square';
-import StoredReactComponent from "./components/StoredReactСomponent";
+import StoredReactComponent from "./components/StoredReactComponent";
 
 class Board extends StoredReactComponent {
     constructor(props) {
