@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, NavLink, HashRouter} from "react-router-dom";
+import {Route, NavLink, HashRouter} from "react-router-dom";
 import Game from "./pages/Game";
 import About from "./pages/About";
 import Settings from "./pages/Settings";
@@ -12,7 +12,7 @@ class Main extends React.Component {
                 <div>
                     <h1>Tic-Tac-Toe</h1>
                     <ul className="header">
-                        <li><NavLink to="/">Game</NavLink></li>
+                        <li><NavLink exact to="/">Game</NavLink></li>
                         <li><NavLink to="/about">About</NavLink></li>
                         <li><NavLink to="/settings">Settings</NavLink></li>
                         <li><NavLink to="/statistics">Statistics</NavLink></li>
