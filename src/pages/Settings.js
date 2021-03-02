@@ -8,6 +8,8 @@ class Settings extends React.Component {
                 <div className="settings__container">
                     <div className="settings__item-wrapper">
                         <h3 className="settings__item-title">Game Sounds</h3>
+                        <div></div>
+                        <div></div>
                     </div>
                     <div className="settings__item-wrapper">
                         <h3 className="settings__item-title">Game Mode</h3>
@@ -32,7 +34,7 @@ class Settings extends React.Component {
                         </div>
                         <div className="radio">
                             <input className="radio-btn" type="radio" id="theme-2" name="theme" value="players"/>
-                            <label htmlFor="theme-2">Sushi: rolls vs sashimi</label>
+                            <label htmlFor="theme-2">Sushi: rolls vs nigiri</label>
                         </div>
                         <div className="radio">
                             <input className="radio-btn" type="radio" id="theme-3" name="theme" value="matrix"/>
