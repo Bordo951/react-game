@@ -1,6 +1,6 @@
 import React from 'react';
 import Square from './Square';
-import StoredReactComponent from "./components/StoredReactСomponent";
+import StoredReactComponent from "./components/StoredReactComponent";
 
 class Board extends StoredReactComponent {
     constructor(props) {
@@ -42,7 +42,7 @@ class Board extends StoredReactComponent {
 
         return (
             <div>
-                <div className="status">{status}</div>
+                <h3 className="status">{status}</h3>
                 <div className="board-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}

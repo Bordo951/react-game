@@ -1,11 +1,11 @@
-body {
-    font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
-}
+//body {
+//    font: 14px "Century Gothic", Futura, sans-serif;
+//    margin: 20px;
+//}
 
-ol, ul {
-    padding-left: 30px;
-}
+//ol, ul {
+//    padding-left: 30px;
+//}
 
 .board-row:after {
     clear: both;
@@ -14,22 +14,25 @@ ol, ul {
 }
 
 .status {
-    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    margin: .5em 0;
 }
 
 .square {
-    background: #fff;
-    border: 1px solid #999;
+    background: $color-gray-square;
+    border: 3px solid $color-white;
     float: left;
-    font-size: 24px;
+    font-size: 50px;
     font-weight: bold;
-    line-height: 34px;
-    height: 34px;
+    color: $color-white;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 34px;
+    width: 70px;
+    height: 70px;
+    line-height: 60px;
 }
 
 .square:focus {
@@ -42,9 +45,35 @@ ol, ul {
 
 .game {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+
+    &__reset-btn {
+        color: $color-white;
+        font-weight: bold;
+        margin-top: 20px;
+        width: 150px;
+        height: 40px;
+        background: $color-gray;
+
+        &:focus {
+            outline: 0;
+        }
+
+        &:hover {
+            background: $color-gray-8;
+        }
+
+        &:active {
+            background: $color-gray;
+        }
+    }
 }
 
 .game-info {
     margin-left: 20px;
+}
+
+.game-board {
+    margin: 0 auto;
 }
