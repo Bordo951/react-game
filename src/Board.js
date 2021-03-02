@@ -76,7 +76,7 @@ class Board extends StoredReactComponent {
 
     render() {
         const winner = this.calculateWinner(this.state.squares);
-        let status = winner ? 'Выиграл ' + winner : 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');
+        let status = winner ? 'Won ' + winner : 'Next move: ' + (this.state.xIsNext ? 'X' : 'O');
 
         return (
             <div>
