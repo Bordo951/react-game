@@ -2,8 +2,9 @@ export default class StateStorage {
     /**
      * Gets the state from the local storage or returns the initial.
      *
-     * @param {string} key
-     * @param {object} initialState
+     * @param {String} key
+     * @param {Object} initialState
+     * @return {Object}
      */
     get(key, initialState) {
         return JSON.parse(window.localStorage.getItem(key)) || initialState || {};
@@ -12,8 +13,8 @@ export default class StateStorage {
     /**
      * Updates the local storage key with targetState object.
      *
-     * @param {string} key
-     * @param {object} targetState
+     * @param {String} key
+     * @param {Object} targetState
      */
     update(key, targetState) {
         window.localStorage.setItem(key, JSON.stringify(targetState));
@@ -22,7 +23,7 @@ export default class StateStorage {
     /**
      * Removes data from the local storage by key.
      *
-     * @param {string} key
+     * @param {String} key
      */
     clear(key) {
         window.localStorage.removeItem(key);
