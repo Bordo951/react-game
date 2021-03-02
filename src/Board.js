@@ -3,7 +3,6 @@ import Square from './Square';
 import StoredReactComponent from "./components/StoredReactComponent";
 import BoardGenerator from "./BoardGenerator";
 import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
 
 class Board extends StoredReactComponent {
     constructor(props) {
@@ -88,7 +87,7 @@ class Board extends StoredReactComponent {
             {value: '5', label: '5x5'},
             {value: '7', label: '7x7'},
             {value: '9', label: '9x9'},
-            {value: '11', label: '11x11'}
+            // {value: '11', label: '11x11'}
         ];
         const winner = this.calculateWinner(this.state.squares);
         let status = winner ? 'Выиграл ' + winner : 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');

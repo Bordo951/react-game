@@ -10,7 +10,7 @@ class Main extends React.Component {
     render() {
         return (
             <HashRouter>
-                <div>
+                <div className="container">
                     <h1>Tic-Tac-Toe</h1>
                     <ul className="navigation">
                         <li className="navigation__item"><NavLink className="navigation__link" exact to="/">Game</NavLink></li>

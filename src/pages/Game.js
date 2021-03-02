@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from '../Board'
+import { Button } from '@material-ui/core';
 
 class Game extends React.Component {
     render() {
