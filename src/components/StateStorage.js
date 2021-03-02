@@ -6,8 +6,8 @@ export default class StateStorage {
      * @param {Object} initialState
      * @return {Object}
      */
-    get(key, initialState) {
-        return JSON.parse(window.localStorage.getItem(key)) || initialState || {};
+    get(key, initialState = null) {
+        return {...initialState, ...JSON.parse(window.localStorage.getItem(key))} || {};
     }
 
     /**
