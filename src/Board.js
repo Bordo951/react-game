@@ -65,7 +65,6 @@ class Board extends StoredReactComponent {
 
         for (let i = 0; i < lines.length; i++) {
             const lineIndexes = lines[i];
-
             firstEqual = squares[lineIndexes[0]];
             isWinner = true;
             lineIndexes.forEach(function (lineIndex) {
@@ -96,7 +95,7 @@ class Board extends StoredReactComponent {
 
         return (
             <div>
-                <div className="status">{status}</div>
+                <h3 className="status">{status}</h3>
                 <div className="board-settings">
                     <Dropdown options={options} onChange={this.setBoardSize.bind(this)}
                               placeholder="Select a board size"/>

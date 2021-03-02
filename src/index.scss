@@ -1,4 +1,9 @@
 @import "styles/_normalize";
+
+//Variables
+@import "styles/variables/_colors";
+
+
 @import "styles/_main";
 
 //Pages
@@ -9,6 +14,3 @@
 
 //Components
 @import "styles/elements/_playing-field";
-
-//Variables
-@import "styles/variables/_colors";
