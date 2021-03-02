@@ -20,13 +20,27 @@ export default class StoredReactComponent extends React.Component {
     }
 
     /**
-     * Updates the React.Component state and save state to the storage by key.
+     * Updates the React.Component state and save state to the storage.
      *
      * @param {Object} targetState
      */
     updateState(targetState) {
         this.setState(targetState, () => {
             this.stateStorage.update(this.stateKey, targetState)
+        });
+    }
+
+    /**
+     * Updates the React.Component state by key and save state to the storage by key.
+     *
+     * @param {String} targetKey
+     * @param {Object} targetState
+     */
+    updateKeyState(targetKey, targetState) {
+        this.setState({targetKey: targetState}, () => {
+            let currentState = this.stateStorage.get(this.stateKey);
+            currentState[targetKey] = targetState;
+            this.stateStorage.update(this.stateKey, currentState)
         });
     }
 }

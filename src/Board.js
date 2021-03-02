@@ -2,12 +2,11 @@ import React from 'react';
 import Square from './Square';
 import StoredReactComponent from "./components/StoredReactComponent";
 import BoardGenerator from "./BoardGenerator";
-import Dropdown from 'react-dropdown';
 
 class Board extends StoredReactComponent {
     constructor(props) {
         super(props, 'board', {
-            size: 3,
+            level: 3,
             squares: Array(9).fill(null),
             xIsNext: true,
         });
@@ -23,7 +22,7 @@ class Board extends StoredReactComponent {
         squares[i] = this.state.xIsNext ? 'X' : 'O';
 
         this.updateState({
-            size: this.state.size,
+            level: this.state.level,
             squares: squares,
             xIsNext: !this.state.xIsNext,
         });
@@ -37,14 +36,8 @@ class Board extends StoredReactComponent {
         />;
     }
 
-    setBoardSize(option) {
-        this.setState({
-            size: option.value
-        });
-    }
-
     renderBoardRows() {
-        let squaresRows = this.boardGenerator.generateSquaresRows(this.state.size);
+        let squaresRows = this.boardGenerator.generateSquaresRows(this.state.level);
 
         return squaresRows.map((squaresRow, rowIndex) => {
             let listItem = squaresRow.map((square, squareIndex) =>
@@ -82,23 +75,12 @@ class Board extends StoredReactComponent {
     }
 
     render() {
-        const options = [
-            {value: '3', label: '3x3'},
-            {value: '5', label: '5x5'},
-            {value: '7', label: '7x7'},
-            {value: '9', label: '9x9'},
-            // {value: '11', label: '11x11'}
-        ];
         const winner = this.calculateWinner(this.state.squares);
         let status = winner ? 'Выиграл ' + winner : 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');
 
         return (
             <div>
                 <h3 className="status">{status}</h3>
-                <div className="board-settings">
-                    <Dropdown options={options} onChange={this.setBoardSize.bind(this)}
-                              placeholder="Select a board size"/>
-                </div>
                 <div className="board">
                     {this.renderBoardRows()}
                 </div>

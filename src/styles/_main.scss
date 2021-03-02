@@ -4,8 +4,6 @@
 }
 
 body {
-    height: 100vh;
-    overflow-y: auto;
     background: linear-gradient(to right, #1D1D1D 0%, #252525 50%, #1D1D1D 100%);
     background-repeat: no-repeat;
     margin: 0;
@@ -14,18 +12,12 @@ body {
 }
 
 .root {
-    height: 100vh;
-    overflow-y: auto;
     padding: 0 5px;
 }
 
 .container {
     min-height: calc(100% - 13%);
 }
-
-//h1, h2, p, ul, li {
-//    font-family: sans-serif;
-//}
 
 h1 {
     margin: .67em 0;
@@ -110,27 +102,3 @@ h1 {
         font-weight: bold;
     }
 }
-
-//ul.navigation li {
-//    display: inline;
-//    list-style-type: none;
-//    margin: 0;
-//}
-
-//ul.navigation li a {
-//    color: #FFF;
-//    font-weight: bold;
-//    text-decoration: none;
-//    padding: 20px;
-//    display: inline-block;
-//}
-
-//.content h2 {
-//    padding: 0;
-//    margin: 0;
-//}
-//.content li {
-//    margin-bottom: 10px;
-//}
-
-
