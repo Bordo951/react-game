@@ -10,10 +10,18 @@ class Board extends StoredReactComponent {
             squares: Array(9).fill(null),
             xIsNext: true
         });
+        this.isWinner = false;
+        this.winner = null;
         this.boardGenerator = new BoardGenerator();
     }
 
     handleClick(i) {
+        if (this.isWinner) {
+            this.audioPlayer.playSound('mimo');
+        } else {
+            this.audioPlayer.playSound('click');
+        }
+
         const squares = this.state.squares.slice();
 
         if (this.calculateWinner(squares) || squares[i]) {
@@ -28,6 +36,13 @@ class Board extends StoredReactComponent {
             squares: squares,
             xIsNext: xIsNext
         });
+
+        this.winner = this.calculateWinner(squares);
+
+        if (this.winner) {
+            this.isWinner = true;
+            this.audioPlayer.playSound('congratulations');
+        }
     }
 
     renderSquare(i, index) {
@@ -91,12 +106,14 @@ class Board extends StoredReactComponent {
     refreshBoard() {
         this.removeStateByKey('squares');
         this.state.squares = [];
+        this.isWinner = false;
+        this.winner = null;
+        this.state.xIsNext = true;
     }
 
     render() {
-        const winner = this.calculateWinner(this.state.squares);
-        let status = winner ? 'Won ' + winner : 'Next move: ' + (this.state.xIsNext ? 'X' : 'O');
         let boardView = <h3 className="status">Are you ready to play the 'Tic-Tac-Toe' game?</h3>;
+        let status = this.isWinner ? 'Won ' + this.winner : 'Next move: ' + (this.state.xIsNext ? 'X' : 'O');
 
         if (this.props.isStarted) {
             boardView = <div>
