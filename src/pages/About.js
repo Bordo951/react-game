@@ -3,8 +3,8 @@ import React from 'react';
 class About extends React.Component {
     render() {
         return (
-            <div>
-                <h2>About the game</h2>
+            <div className="about">
+                <h2 className="about__title">About the game</h2>
                 <p>Mauris sem velit, vehicula eget sodales vitae,
                     rhoncus eget sapien:</p>
                 <ol>
