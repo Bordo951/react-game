@@ -9,8 +9,9 @@ class Settings extends StoredReactComponent {
             level: "3",
             move: "cross",
             soundsDisabled: false,
-            soundsVolume: "1",
-            musicDisabled: false
+            soundsVolume: "0.7",
+            musicDisabled: true,
+            musicVolume: "0.5"
         });
 
         this.onChangeTheme = this.onChangeTheme.bind(this);
@@ -19,6 +20,7 @@ class Settings extends StoredReactComponent {
         this.onChangeSounds = this.onChangeSounds.bind(this);
         this.onChangeMusic = this.onChangeMusic.bind(this);
         this.onChangeSoundsVolume = this.onChangeSoundsVolume.bind(this);
+        this.onChangeMusicVolume = this.onChangeMusicVolume.bind(this);
         this.onChangeMove = this.onChangeMove.bind(this);
     }
 
@@ -51,6 +53,20 @@ class Settings extends StoredReactComponent {
             musicDisabled: event.target.checked
         });
         this.audioPlayer.playSound('settings-click');
+
+        if (event.target.checked) {
+            window.mainSound.pause();
+        } else {
+            window.mainSound.play();
+        }
+    }
+
+    onChangeMusicVolume(event) {
+        this.updateKeyState('musicVolume', event.target.value);
+        this.setState({
+            musicVolume: event.target.value
+        });
+        window.mainSound.volume = event.target.value;
     }
 
     onChangeTheme(event) {
@@ -107,7 +123,7 @@ class Settings extends StoredReactComponent {
                                 </label>
                             </div>
                             <div>
-                                <input className="volume-toggle" type="range" id="sounds-volume" name="sounds-volume" value={this.state.soundsVolume} onChange={this.onChangeSoundsVolume} min="0" step="0.05" max="1"/>
+                                <input className="volume-toggle" type="range" id="sounds-volume" name="sounds-volume" value={this.state.soundsVolume} onChange={this.onChangeSoundsVolume} min="0" step="0.01" max="0.7"/>
                                 <label className="volume-name" htmlFor="volume">Volume</label>
                             </div>
                         </div>
@@ -125,7 +141,7 @@ class Settings extends StoredReactComponent {
                                 </label>
                             </div>
                             <div>
-                                <input className="volume-toggle" type="range" id="music-volume" name="music-volume" min="0" step="0.05" max="1"/>
+                                <input className="volume-toggle" type="range" id="music-volume" name="music-volume" value={this.state.musicVolume} onChange={this.onChangeMusicVolume} min="0" step="0.01" max="0.7"/>
                                 <label className="volume-name" htmlFor="volume">Volume</label>
                             </div>
                         </div>
