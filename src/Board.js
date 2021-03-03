@@ -114,11 +114,12 @@ class Board extends StoredReactComponent {
     render() {
         let boardView = <h3 className="status">Are you ready to play the 'Tic-Tac-Toe' game?</h3>;
         let status = this.isWinner ? 'Won ' + this.winner : 'Next move: ' + (this.state.xIsNext ? 'X' : 'O');
+        let boardCompletedClass = this.isWinner ? 'board won' : 'board';
 
         if (this.props.isStarted) {
             boardView = <div>
                 <h3 className="status">{status}</h3>
-                <div className="board">
+                <div className={boardCompletedClass}>
                     {this.renderBoardRows()}
                 </div>
             </div>;
