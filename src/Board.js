@@ -8,7 +8,7 @@ class Board extends StoredReactComponent {
         super(props, 'board', {
             level: 3,
             squares: Array(9).fill(null),
-            xIsNext: true
+            xIsNext: "true"
         });
         this.isWinner = false;
         this.winner = null;
@@ -27,8 +27,10 @@ class Board extends StoredReactComponent {
         if (this.calculateWinner(squares) || squares[i]) {
             return;
         }
-        squares[i] = this.state.xIsNext ? 'X' : 'O';
-        let xIsNext = !this.state.xIsNext;
+        squares[i] = this.state.xIsNext === "true" ? 'X' : 'O';
+        this.state.xIsNext = this.state.xIsNext === "true" ? "false" : "true";
+
+        let xIsNext = this.state.xIsNext;
 
         this.updateKeyState('squares', squares);
         this.updateKeyState('xIsNext', xIsNext);
@@ -108,12 +110,12 @@ class Board extends StoredReactComponent {
         this.state.squares = [];
         this.isWinner = false;
         this.winner = null;
-        this.state.xIsNext = true;
+        this.state.xIsNext = this.stateStorage.getStoredValueByKey('board', 'xIsFirst');
     }
 
     render() {
         let boardView = <h3 className="status">Are you ready to play the 'Tic-Tac-Toe' game?</h3>;
-        let status = this.isWinner ? 'Won ' + this.winner : 'Next move: ' + (this.state.xIsNext ? 'X' : 'O');
+        let status = this.isWinner ? 'Won ' + this.winner : 'Next move: ' + (this.state.xIsNext === "true" ? 'X' : 'O');
         let boardCompletedClass = this.isWinner ? 'board won' : 'board';
 
         if (this.props.isStarted) {

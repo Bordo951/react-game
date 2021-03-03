@@ -11,7 +11,7 @@ export default class Initializer {
         isStarted: false,
         level: "3",
         squares: Array(9).fill(null),
-        move: "cross",
+        xIsFirst: "true",
         soundsDisabled: false,
         soundsVolume: "0.7",
         musicDisabled: false,

@@ -7,7 +7,7 @@ class Settings extends StoredReactComponent {
             mode: "players",
             theme: "classic",
             level: "3",
-            move: "cross",
+            xIsFirst: "true",
             soundsDisabled: false,
             soundsVolume: "0.7",
             musicDisabled: true,
@@ -21,13 +21,13 @@ class Settings extends StoredReactComponent {
         this.onChangeMusic = this.onChangeMusic.bind(this);
         this.onChangeSoundsVolume = this.onChangeSoundsVolume.bind(this);
         this.onChangeMusicVolume = this.onChangeMusicVolume.bind(this);
-        this.onChangeMove = this.onChangeMove.bind(this);
+        this.onChangeXIsFirst = this.onChangeXIsFirst.bind(this);
     }
 
-    onChangeMove(event) {
-        this.updateKeyState('move', event.target.value);
+    onChangeXIsFirst(event) {
+        this.updateKeyState('xIsFirst', event.target.value);
         this.setState({
-            move: event.target.value
+            xIsFirst: event.target.value
         });
         this.audioPlayer.playSound('settings-click');
     }
@@ -100,12 +100,12 @@ class Settings extends StoredReactComponent {
                 <div className="settings__container">
                     <div className="settings__item-wrapper_long">
                         <h4 className="settings__item-title_long">Whose move is the first?</h4>
-                        <input className="radio-btn" type="radio" id="move-1" name="move" value="cross"
-                               checked={this.state.move === "cross"} onChange={this.onChangeMove}/>
-                        <label htmlFor="move-1">Cross</label>
-                        <input className="radio-btn" type="radio" id="move-2" name="move" value="zero"
-                               checked={this.state.move === "zero"} onChange={this.onChangeMove}/>
-                        <label htmlFor="move-2">Zero</label>
+                        <input className="radio-btn" type="radio" id="xIsFirst-1" name="xIsFirst" value="true"
+                               checked={this.state.xIsFirst === "true"} onChange={this.onChangeXIsFirst}/>
+                        <label htmlFor="xIsFirst-1">Cross</label>
+                        <input className="radio-btn" type="radio" id="xIsFirst-2" name="xIsFirst" value="false"
+                               checked={this.state.xIsFirst === "false"} onChange={this.onChangeXIsFirst}/>
+                        <label htmlFor="xIsFirst-2">Zero</label>
                     </div>
                     <div className="settings__item-wrapper">
                         <h3 className="settings__item-title">Game Sounds</h3>
@@ -114,16 +114,22 @@ class Settings extends StoredReactComponent {
                             {/*From https://codepen.io/aaroniker/pen/zYYKxey*/}
                             <div>
                                 <label className="volume">
-                                    <input type="checkbox" name="sounds-disabled" checked={this.state.soundsDisabled} onChange={this.onChangeSounds} />
-                                        <svg viewBox="0 0 108 96">
-                                            <path d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"></path>
-                                            <path d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"></path>
-                                            <path d="M95,69 C101.666667,61.6666667 105,54.3333333 105,47 C105,39.6666667 101.666667,32.3333333 95,25 L75.5,6 L49,33"></path>
-                                        </svg>
+                                    <input type="checkbox" name="sounds-disabled" checked={this.state.soundsDisabled}
+                                           onChange={this.onChangeSounds}/>
+                                    <svg viewBox="0 0 108 96">
+                                        <path
+                                            d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"></path>
+                                        <path
+                                            d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"></path>
+                                        <path
+                                            d="M95,69 C101.666667,61.6666667 105,54.3333333 105,47 C105,39.6666667 101.666667,32.3333333 95,25 L75.5,6 L49,33"></path>
+                                    </svg>
                                 </label>
                             </div>
                             <div>
-                                <input className="volume-toggle" type="range" id="sounds-volume" name="sounds-volume" value={this.state.soundsVolume} onChange={this.onChangeSoundsVolume} min="0" step="0.01" max="0.7"/>
+                                <input className="volume-toggle" type="range" id="sounds-volume" name="sounds-volume"
+                                       value={this.state.soundsVolume} onChange={this.onChangeSoundsVolume} min="0"
+                                       step="0.01" max="0.7"/>
                                 <label className="volume-name" htmlFor="volume">Volume</label>
                             </div>
                         </div>
@@ -132,16 +138,22 @@ class Settings extends StoredReactComponent {
                             {/*From https://codepen.io/aaroniker/pen/zYYKxey*/}
                             <div>
                                 <label className="volume">
-                                    <input type="checkbox" name="music-disabled" checked={this.state.musicDisabled} onChange={this.onChangeMusic}/>
+                                    <input type="checkbox" name="music-disabled" checked={this.state.musicDisabled}
+                                           onChange={this.onChangeMusic}/>
                                     <svg viewBox="0 0 108 96">
-                                        <path d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"></path>
-                                        <path d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"></path>
-                                        <path d="M95,69 C101.666667,61.6666667 105,54.3333333 105,47 C105,39.6666667 101.666667,32.3333333 95,25 L75.5,6 L49,33"></path>
+                                        <path
+                                            d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"></path>
+                                        <path
+                                            d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"></path>
+                                        <path
+                                            d="M95,69 C101.666667,61.6666667 105,54.3333333 105,47 C105,39.6666667 101.666667,32.3333333 95,25 L75.5,6 L49,33"></path>
                                     </svg>
                                 </label>
                             </div>
                             <div>
-                                <input className="volume-toggle" type="range" id="music-volume" name="music-volume" value={this.state.musicVolume} onChange={this.onChangeMusicVolume} min="0" step="0.01" max="0.7"/>
+                                <input className="volume-toggle" type="range" id="music-volume" name="music-volume"
+                                       value={this.state.musicVolume} onChange={this.onChangeMusicVolume} min="0"
+                                       step="0.01" max="0.7"/>
                                 <label className="volume-name" htmlFor="volume">Volume</label>
                             </div>
                         </div>
