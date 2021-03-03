@@ -59,9 +59,7 @@ class Game extends StoredReactComponent {
                     <div className="game-board">
                         <Board isStarted={this.state.isStarted} level={this.state.level}/>
                     </div>
-                    <div className="game-actions">
-                        {actionButtons}
-                    </div>
+                    {actionButtons}
                 </div>
             </div>
         );

@@ -21,12 +21,31 @@
             padding: 10px 0;
             width: 400px;
             background: $color-gray;
+
+            &_long {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                width: 89%;
+                margin: 10px auto;
+                padding: 10px;
+                background: $color-gray;
+
+                &> label {
+                    font-weight: bold;
+                }
+            }
         }
 
         &-title {
             margin: 15px 0;
             font-size: 1.8em;
             text-align: center;
+
+            &_long {
+                margin: 5px 20px;
+                font-size: 1.3em;
+            }
         }
     }
 }
@@ -83,13 +102,14 @@
             align-items: center;
             user-select: none;
             font-size: 1.3em;
+            margin-right: 20px;
 
             &:hover {
                 color: $color-dark-gray;
                 cursor: pointer;
             }
 
-            &::before {
+            &::before{
                 content: '';
                 display: inline-block;
                 width: 1em;
