@@ -8,7 +8,7 @@ class Board extends StoredReactComponent {
         super(props, 'board', {
             level: 3,
             squares: Array(9).fill(null),
-            xIsNext: true,
+            xIsNext: true
         });
         this.boardGenerator = new BoardGenerator();
     }
@@ -20,11 +20,13 @@ class Board extends StoredReactComponent {
             return;
         }
         squares[i] = this.state.xIsNext ? 'X' : 'O';
+        let xIsNext = !this.state.xIsNext;
 
-        this.updateState({
-            level: this.state.level,
+        this.updateKeyState('squares', squares);
+        this.updateKeyState('xIsNext', xIsNext);
+        this.setState({
             squares: squares,
-            xIsNext: !this.state.xIsNext,
+            xIsNext: xIsNext
         });
     }
 
@@ -51,7 +53,7 @@ class Board extends StoredReactComponent {
     }
 
     calculateWinner(squares) {
-        const lines = this.boardGenerator.generateWinnerLines(this.state.size);
+        const lines = this.boardGenerator.generateWinnerLines(this.state.level);
         let firstEqual;
         let isWinner;
 
@@ -74,16 +76,29 @@ class Board extends StoredReactComponent {
         return null;
     }
 
+    refreshBoard() {
+        this.removeStateByKey('squares');
+        this.state.squares = [];
+    }
+
     render() {
         const winner = this.calculateWinner(this.state.squares);
         let status = winner ? 'Won ' + winner : 'Next move: ' + (this.state.xIsNext ? 'X' : 'O');
+        let boardView = <h3 className="status">Are you ready to play the 'Tic-Tac-Toe' game?</h3>;
 
-        return (
-            <div>
+        if (this.props.isStarted) {
+            boardView = <div>
                 <h3 className="status">{status}</h3>
                 <div className="board">
                     {this.renderBoardRows()}
                 </div>
+            </div>;
+        } else {
+            this.refreshBoard();
+        }
+
+        return (<div>
+                {boardView}
             </div>
         );
     }

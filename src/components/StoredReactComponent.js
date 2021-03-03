@@ -43,4 +43,15 @@ export default class StoredReactComponent extends React.Component {
             this.stateStorage.update(this.stateKey, currentState)
         });
     }
+
+    /**
+     * Removes the React.Component state by key.
+     *
+     * @param {String} targetKey
+     */
+    removeStateByKey(targetKey) {
+            let currentState = this.stateStorage.get(this.stateKey);
+            delete currentState[targetKey];
+            this.stateStorage.update(this.stateKey, currentState);
+    }
 }
