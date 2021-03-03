@@ -15,11 +15,21 @@ class Game extends StoredReactComponent {
     }
 
     startGame() {
+        let level = this.state.level;
+        let mode = this.stateStorage.getStoredValueByKey('board', 'mode');
+
         this.updateKeyState('isStarted', true);
+        this.updateKeyState('squares', Array(level * level).fill(null));
         this.setState({
             isStarted: true
         });
         this.audioPlayer.playSound('start-game');
+
+        if (mode === "autoplay") {
+            window.autoplayInterval = setInterval(function () {
+                window.autoplay.autoplay();
+            }, 600);
+        }
     }
 
     gameOver() {
@@ -28,6 +38,10 @@ class Game extends StoredReactComponent {
             isStarted: false
         });
         this.audioPlayer.playSound('game-over');
+        this.stateStorage.updateStateInStorageByKey(this.stateKey,'winner', null);
+        this.stateStorage.updateStateInStorageByKey(this.stateKey,'isWinner', false);
+
+        clearInterval(window.autoplayInterval);
     }
 
     saveGame() {

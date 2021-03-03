@@ -21,6 +21,19 @@ export default class StateStorage {
     }
 
     /**
+     * Updates state in storage by key.
+     *
+     * @param {String} stateKey
+     * @param {String} targetKey
+     * @param {Object} targetState
+     */
+    updateStateInStorageByKey(stateKey, targetKey, targetState) {
+        let currentState = this.get(stateKey);
+        currentState[targetKey] = targetState;
+        this.update(stateKey, currentState)
+    }
+
+    /**
      * Gets stored state value by key.
      *
      * @param {String} targetState

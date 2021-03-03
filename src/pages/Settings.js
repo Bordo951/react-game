@@ -78,17 +78,24 @@ class Settings extends StoredReactComponent {
     }
 
     onChangeMode(event) {
-        this.updateKeyState('mode', event.target.value);
+        let value = event.target.value;
+
+        this.updateKeyState('mode', value);
+        this.updateKeyState('isStarted', false);
         this.setState({
-            mode: event.target.value
+            mode: value
         });
         this.audioPlayer.playSound('settings-click');
     }
 
     onChangeLevel(event) {
-        this.updateKeyState('level', event.target.value);
+        let value = event.target.value;
+
+        this.updateKeyState('level', value);
+        this.updateKeyState('isStarted', false);
+        this.updateKeyState('squares', Array(value * value).fill(null));
         this.setState({
-            level: event.target.value
+            level: value
         });
         this.audioPlayer.playSound('settings-click');
     }

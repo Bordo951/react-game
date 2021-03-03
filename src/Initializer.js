@@ -1,4 +1,5 @@
 import StateStorage from "./components/StateStorage";
+import Autoplay from "./Autoplay";
 
 export default class Initializer {
     constructor() {
@@ -15,7 +16,9 @@ export default class Initializer {
         soundsDisabled: false,
         soundsVolume: "0.7",
         musicDisabled: false,
-        musicVolume: "0.5"
+        musicVolume: "0.5",
+        isWinner: false,
+        winner: null
     };
 
     initApp() {
@@ -38,5 +41,7 @@ export default class Initializer {
 
             window.mainSound = sound;
         }
+
+        window.autoplay = new Autoplay();
     }
 }
