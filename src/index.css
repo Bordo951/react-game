@@ -322,6 +322,7 @@ html {
 
 body {
   background: linear-gradient(to right, #1D1D1D 0%, #252525 50%, #1D1D1D 100%);
+  overflow-y: scroll;
   margin: 0;
   font: 14px "Century Gothic", Futura, sans-serif;
   color: #fff;
@@ -774,6 +775,17 @@ h1 {
     stroke-dasharray: 60px 0 184px;
     stroke-dashoffset: 0;
   }
+}
+.scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(77, 77, 77, 0.8);
+}
+.scrollbar::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(77, 77, 77, 0.8);
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #363636;
 }
 
 /*# sourceMappingURL=index.css.map */
