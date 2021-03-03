@@ -42,7 +42,42 @@ class Settings extends StoredReactComponent {
                 <div className="settings__container">
                     <div className="settings__item-wrapper">
                         <h3 className="settings__item-title">Game Sounds</h3>
-                        <div></div>
+                        <div className="sounds__wrapper">
+                            <div className="sounds__title">Sounds</div>
+                            {/*From https://codepen.io/aaroniker/pen/zYYKxey*/}
+                            <div>
+                                <label className="volume">
+                                    <input type="checkbox"/>
+                                        <svg viewBox="0 0 108 96">
+                                            <path d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"></path>
+                                            <path d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"></path>
+                                            <path d="M95,69 C101.666667,61.6666667 105,54.3333333 105,47 C105,39.6666667 101.666667,32.3333333 95,25 L75.5,6 L49,33"></path>
+                                        </svg>
+                                </label>
+                            </div>
+                            <div>
+                                <input className="volume-toggle" type="range" id="volume" name="volume" min="0" max="11"/>
+                                <label className="volume-name" htmlFor="volume">Volume</label>
+                            </div>
+                        </div>
+                        <div className="sounds__wrapper">
+                            <div className="sounds__title">Music</div>
+                            {/*From https://codepen.io/aaroniker/pen/zYYKxey*/}
+                            <div>
+                                <label className="volume">
+                                    <input type="checkbox"/>
+                                    <svg viewBox="0 0 108 96">
+                                        <path d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"></path>
+                                        <path d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"></path>
+                                        <path d="M95,69 C101.666667,61.6666667 105,54.3333333 105,47 C105,39.6666667 101.666667,32.3333333 95,25 L75.5,6 L49,33"></path>
+                                    </svg>
+                                </label>
+                            </div>
+                            <div>
+                                <input className="volume-toggle" type="range" id="volume" name="volume" min="0" max="11"/>
+                                <label className="volume-name" htmlFor="volume">Volume</label>
+                            </div>
+                        </div>
                         <div></div>
                     </div>
                     <div className="settings__item-wrapper">
