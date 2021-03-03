@@ -6,12 +6,30 @@ class Settings extends StoredReactComponent {
         super(props, 'board', {
             mode: "players",
             theme: "classic",
-            level: "3"
+            level: "3",
+            soundsDisabled: false,
+            musicDisabled: false
         });
 
         this.onChangeTheme = this.onChangeTheme.bind(this);
         this.onChangeMode = this.onChangeMode.bind(this);
         this.onChangeLevel = this.onChangeLevel.bind(this);
+        this.onChangeSounds = this.onChangeSounds.bind(this);
+        this.onChangeMusic = this.onChangeMusic.bind(this);
+    }
+
+    onChangeSounds(event) {
+        this.updateKeyState('soundsDisabled', event.target.checked);
+        this.setState({
+            soundsDisabled: event.target.checked
+        });
+    }
+
+    onChangeMusic(event) {
+        this.updateKeyState('musicDisabled', event.target.checked);
+        this.setState({
+            musicDisabled: event.target.checked
+        });
     }
 
     onChangeTheme(event) {
@@ -47,7 +65,7 @@ class Settings extends StoredReactComponent {
                             {/*From https://codepen.io/aaroniker/pen/zYYKxey*/}
                             <div>
                                 <label className="volume">
-                                    <input type="checkbox"/>
+                                    <input type="checkbox" name="sounds-disabled" checked={this.state.soundsDisabled} onChange={this.onChangeSounds} />
                                         <svg viewBox="0 0 108 96">
                                             <path d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"></path>
                                             <path d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"></path>
@@ -56,7 +74,7 @@ class Settings extends StoredReactComponent {
                                 </label>
                             </div>
                             <div>
-                                <input className="volume-toggle" type="range" id="volume" name="volume" min="0" max="11"/>
+                                <input className="volume-toggle" type="range" id="sounds-volume" name="sounds-volume" min="0" max="11"/>
                                 <label className="volume-name" htmlFor="volume">Volume</label>
                             </div>
                         </div>
@@ -65,7 +83,7 @@ class Settings extends StoredReactComponent {
                             {/*From https://codepen.io/aaroniker/pen/zYYKxey*/}
                             <div>
                                 <label className="volume">
-                                    <input type="checkbox"/>
+                                    <input type="checkbox" name="music-disabled" checked={this.state.musicDisabled} onChange={this.onChangeMusic}/>
                                     <svg viewBox="0 0 108 96">
                                         <path d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"></path>
                                         <path d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"></path>
@@ -74,7 +92,7 @@ class Settings extends StoredReactComponent {
                                 </label>
                             </div>
                             <div>
-                                <input className="volume-toggle" type="range" id="volume" name="volume" min="0" max="11"/>
+                                <input className="volume-toggle" type="range" id="music-volume" name="music-volume" min="0" max="11"/>
                                 <label className="volume-name" htmlFor="volume">Volume</label>
                             </div>
                         </div>
