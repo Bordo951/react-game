@@ -31,8 +31,20 @@ class Board extends StoredReactComponent {
     }
 
     renderSquare(i, index) {
+        let value;
+        let themeCrossClassName = 'chips-cross__' + this.getStateByKey('theme', 'classic');
+        let themeZeroClassName = 'chips-zero__' + this.getStateByKey('theme', 'classic');
+
+        if (this.state.squares[i] === 'X') {
+            value = <div className={themeCrossClassName}></div>;
+        }
+
+        if (this.state.squares[i] === 'O') {
+            value = <div className={themeZeroClassName}></div>;
+        }
+
         return <Square
-            value={this.state.squares[i]}
+            value={value}
             onClick={() => this.handleClick(i)}
             key={index}
         />;

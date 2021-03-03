@@ -2,8 +2,6 @@
 
 //Variables
 @import "styles/variables/_colors";
-
-
 @import "styles/_main";
 
 //Pages
@@ -13,5 +11,6 @@
 @import "styles/pages/_statistics";
 
 //Components
+@import "styles/elements/_chips";
 @import "styles/elements/_playing-field";
 @import "styles/elements/_sound-on-off";
