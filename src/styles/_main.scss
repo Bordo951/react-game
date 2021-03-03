@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
 body {
     background: linear-gradient(to right, #1D1D1D 0%, #252525 50%, #1D1D1D 100%);
     margin: 0;
