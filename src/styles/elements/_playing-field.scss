@@ -24,14 +24,11 @@
     width: 70px;
     height: 70px;
     line-height: 60px;
+
+    &:focus {
+        outline: 0;
+    }
 }
 
-.square:focus {
-    outline: none;
-}
-
-.kbd-navigation .square:focus {
-    background: #ddd;
-}
 
 
