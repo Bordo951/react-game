@@ -19,6 +19,7 @@ class Game extends StoredReactComponent {
         this.setState({
             isStarted: true
         });
+        this.audioPlayer.playSound('start-game');
     }
 
     gameOver() {
@@ -26,6 +27,7 @@ class Game extends StoredReactComponent {
         this.setState({
             isStarted: false
         });
+        this.audioPlayer.playSound('game-over');
     }
 
     saveGame() {

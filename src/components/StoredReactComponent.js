@@ -1,10 +1,12 @@
 import React from "react";
 import StateStorage from "./StateStorage";
+import AudioPlayer from "./AudioPlayer";
 
 export default class StoredReactComponent extends React.Component {
     constructor(props, stateKey, initialState) {
         super(props);
         this.stateStorage = new StateStorage();
+        this.audioPlayer = new AudioPlayer();
         this.stateKey = stateKey;
         this.setInitialState(initialState);
     }

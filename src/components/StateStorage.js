@@ -11,6 +11,29 @@ export default class StateStorage {
     }
 
     /**
+     * Gets value from local storage by key.
+     *
+     * @param {String} key
+     * @return {Object}
+     */
+    getStateValueByKey(key) {
+        return JSON.parse(window.localStorage.getItem(key));
+    }
+
+    /**
+     * Gets stored state value by key.
+     *
+     * @param {String} targetState
+     * @param {String} key
+     * @return {Object}
+     */
+    getStoredValueByKey(targetState, key) {
+        let state = this.getStateValueByKey(targetState);
+
+        return state[key];
+    }
+
+    /**
      * Updates the local storage key with targetState object.
      *
      * @param {String} key

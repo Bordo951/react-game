@@ -9,6 +9,7 @@ class Settings extends StoredReactComponent {
             level: "3",
             move: "cross",
             soundsDisabled: false,
+            soundsVolume: "1",
             musicDisabled: false
         });
 
@@ -17,6 +18,7 @@ class Settings extends StoredReactComponent {
         this.onChangeLevel = this.onChangeLevel.bind(this);
         this.onChangeSounds = this.onChangeSounds.bind(this);
         this.onChangeMusic = this.onChangeMusic.bind(this);
+        this.onChangeSoundsVolume = this.onChangeSoundsVolume.bind(this);
         this.onChangeMove = this.onChangeMove.bind(this);
     }
 
@@ -25,12 +27,21 @@ class Settings extends StoredReactComponent {
         this.setState({
             move: event.target.value
         });
+        this.audioPlayer.playSound('settings-click');
     }
 
     onChangeSounds(event) {
         this.updateKeyState('soundsDisabled', event.target.checked);
         this.setState({
             soundsDisabled: event.target.checked
+        });
+        this.audioPlayer.playSound('settings-click');
+    }
+
+    onChangeSoundsVolume(event) {
+        this.updateKeyState('soundsVolume', event.target.value);
+        this.setState({
+            soundsVolume: event.target.value
         });
     }
 
@@ -39,6 +50,7 @@ class Settings extends StoredReactComponent {
         this.setState({
             musicDisabled: event.target.checked
         });
+        this.audioPlayer.playSound('settings-click');
     }
 
     onChangeTheme(event) {
@@ -46,6 +58,7 @@ class Settings extends StoredReactComponent {
         this.setState({
             theme: event.target.value
         });
+        this.audioPlayer.playSound('settings-click');
     }
 
     onChangeMode(event) {
@@ -53,6 +66,7 @@ class Settings extends StoredReactComponent {
         this.setState({
             mode: event.target.value
         });
+        this.audioPlayer.playSound('settings-click');
     }
 
     onChangeLevel(event) {
@@ -60,6 +74,7 @@ class Settings extends StoredReactComponent {
         this.setState({
             level: event.target.value
         });
+        this.audioPlayer.playSound('settings-click');
     }
 
     render() {
@@ -92,7 +107,7 @@ class Settings extends StoredReactComponent {
                                 </label>
                             </div>
                             <div>
-                                <input className="volume-toggle" type="range" id="sounds-volume" name="sounds-volume" min="0" max="11"/>
+                                <input className="volume-toggle" type="range" id="sounds-volume" name="sounds-volume" value={this.state.soundsVolume} onChange={this.onChangeSoundsVolume} min="0" step="0.05" max="1"/>
                                 <label className="volume-name" htmlFor="volume">Volume</label>
                             </div>
                         </div>
@@ -110,7 +125,7 @@ class Settings extends StoredReactComponent {
                                 </label>
                             </div>
                             <div>
-                                <input className="volume-toggle" type="range" id="music-volume" name="music-volume" min="0" max="11"/>
+                                <input className="volume-toggle" type="range" id="music-volume" name="music-volume" min="0" step="0.05" max="1"/>
                                 <label className="volume-name" htmlFor="volume">Volume</label>
                             </div>
                         </div>
