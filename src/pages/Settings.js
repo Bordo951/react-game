@@ -7,6 +7,7 @@ class Settings extends StoredReactComponent {
             mode: "players",
             theme: "classic",
             level: "3",
+            move: "cross",
             soundsDisabled: false,
             musicDisabled: false
         });
@@ -16,6 +17,14 @@ class Settings extends StoredReactComponent {
         this.onChangeLevel = this.onChangeLevel.bind(this);
         this.onChangeSounds = this.onChangeSounds.bind(this);
         this.onChangeMusic = this.onChangeMusic.bind(this);
+        this.onChangeMove = this.onChangeMove.bind(this);
+    }
+
+    onChangeMove(event) {
+        this.updateKeyState('move', event.target.value);
+        this.setState({
+            move: event.target.value
+        });
     }
 
     onChangeSounds(event) {
@@ -60,9 +69,11 @@ class Settings extends StoredReactComponent {
                 <div className="settings__container">
                     <div className="settings__item-wrapper_long">
                         <h4 className="settings__item-title_long">Whose move is the first?</h4>
-                        <input className="radio-btn" type="radio" id="move-1" name="move" value="X"/>
+                        <input className="radio-btn" type="radio" id="move-1" name="move" value="cross"
+                               checked={this.state.move === "cross"} onChange={this.onChangeMove}/>
                         <label htmlFor="move-1">Cross</label>
-                        <input className="radio-btn" type="radio" id="move-2" name="move" value="O"/>
+                        <input className="radio-btn" type="radio" id="move-2" name="move" value="zero"
+                               checked={this.state.move === "zero"} onChange={this.onChangeMove}/>
                         <label htmlFor="move-2">Zero</label>
                     </div>
                     <div className="settings__item-wrapper">
