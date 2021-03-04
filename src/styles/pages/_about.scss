@@ -4,4 +4,38 @@
         font-size: 2em;
         margin-bottom: .5em;
     }
+
+    &__content {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    &__description {
+        margin: 10px 0;
+        text-indent: 1.5em;
+        text-align: justify;
+        font-size: 1.3em;
+        font-weight: 600;
+        color: $color-light-gray;
+
+        & > b {
+            color: $color-white;
+        }
+    }
+
+
+    &__list {
+        padding: 20px 0 20px 15px;
+        border-top: 2px solid grey;
+        border-bottom: 2px solid grey;
+    }
+
+    &__item {
+        padding: 5px 0;
+        font-size: 1.2em;
+
+        & > ul {
+            padding: 10px 0 0 20px;
+        }
+    }
 }

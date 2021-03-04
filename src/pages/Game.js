@@ -58,12 +58,10 @@ class Game extends StoredReactComponent {
         if (this.state.isStarted) {
             actionButtons = <div className="game-actions">
                 <button className="game__reset-btn" onClick={this.gameOver}>Game over</button>
-                <button className="game__reset-btn" onClick={this.saveGame}>Save game</button>
             </div>
         } else {
             actionButtons = <div className="game-actions">
-                <button className="game__reset-btn" onClick={this.startGame}>Start game</button>
-                <button className="game__reset-btn">Load game</button>
+                <button className="game__reset-btn" onClick={this.startGame}>New game</button>
             </div>
         }
 
