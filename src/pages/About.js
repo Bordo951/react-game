@@ -28,6 +28,13 @@ class About extends React.Component {
                                 <li>9 х 9</li>
                             </ul>
                         </li>
+                        <li className="about__item">Hot key to control the playing field
+                            <ul>
+                                <li>'ENTER' - сlick on buttons 'New game' or 'Game over'</li>
+                                <li>'SPACE' - placing a chip in a cell</li>
+                                <li>&larr; &uarr; &rarr; &darr; - arrows will help you move around the field</li>
+                            </ul>
+                        </li>
                     </ol>
                     <p className="about__description">
                         <b>Attention!</b> All the specified settings will be implemented only after the launch of <b>the New game</b>.
