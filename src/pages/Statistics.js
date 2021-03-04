@@ -5,7 +5,7 @@ class Statistics extends React.Component {
         let statistics = JSON.parse(window.localStorage.getItem('statistics')) ?? [];
 
         return statistics.map((statistic, rowIndex) => {
-            return <tr className="statistics__table-item">
+            return <tr className="statistics__table-item" key={rowIndex}>
                 <td>{statistic.winner}</td>
                 <td>{statistic.mode}</td>
                 <td>{statistic.level}</td>
@@ -15,8 +15,6 @@ class Statistics extends React.Component {
                 <td>{statistic.totalAmount}</td>
             </tr>
         });
-
-
     }
 
     render() {
