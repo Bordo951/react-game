@@ -19,9 +19,12 @@ class Game extends StoredReactComponent {
         let mode = this.stateStorage.getStoredValueByKey('board', 'mode');
 
         this.updateKeyState('isStarted', true);
+        this.updateKeyState('isWinner', false);
         this.updateKeyState('squares', Array(level * level).fill(null));
+
         this.setState({
-            isStarted: true
+            isStarted: true,
+            isWinner: false
         });
         this.audioPlayer.playSound('start-game');
 

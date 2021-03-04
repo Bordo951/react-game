@@ -1,9 +1,11 @@
 import StateStorage from "./components/StateStorage";
 import Autoplay from "./Autoplay";
+import Keyboardplay from "./Keyboardplay";
 
 export default class Initializer {
     constructor() {
         this.stateStorage = new StateStorage();
+        this.keyBoardplay = new Keyboardplay();
     }
 
     initState = {
@@ -43,5 +45,9 @@ export default class Initializer {
         }
 
         window.autoplay = new Autoplay();
+
+
+        document.onkeydown = this.keyBoardplay.initKeyboard.bind(this.keyBoardplay);
+        window.addEventListener("keydown", this.keyBoardplay.preventScrolling, false);
     }
 }
