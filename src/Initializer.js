@@ -17,7 +17,7 @@ export default class Initializer {
         xIsFirst: "true",
         soundsDisabled: false,
         soundsVolume: "0.7",
-        musicDisabled: false,
+        musicDisabled: true,
         musicVolume: "0.5",
         isWinner: false,
         winner: null
