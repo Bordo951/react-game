@@ -17,7 +17,9 @@ class Board extends StoredReactComponent {
 
     handleClick(event, i) {
         if (this.state.isWinner) {
-            this.audioPlayer.playSound('mimo');
+            if (event.isTrusted) {
+                this.audioPlayer.playSound('mimo');
+            }
         } else {
             this.audioPlayer.playSound('click');
         }
@@ -46,6 +48,7 @@ class Board extends StoredReactComponent {
             this.state.isWinner = true;
             this.stateStorage.updateStateInStorageByKey(this.stateKey, 'isWinner', this.state.isWinner);
             this.audioPlayer.playSound('congratulations');
+            this.saveStatistics();
             clearInterval(window.autoplayInterval);
         }
 
@@ -57,6 +60,37 @@ class Board extends StoredReactComponent {
                 }, 600);
             }
         }
+    }
+
+    saveStatistics() {
+        let statistics = JSON.parse(window.localStorage.getItem('statistics')) ?? [];
+        let squares = this.stateStorage.getStoredValueByKey('board', 'squares') ?? [];
+        let crossAmount = 0;
+        let zeroAmount = 0;
+
+        squares.forEach(square => {
+                if (square != null) {
+                    if (square === "X") {
+                        crossAmount++;
+                    }
+                    if (square === "O") {
+                        zeroAmount++;
+                    }
+                }
+            }
+        );
+
+        statistics.push({
+            winner: this.state.winner,
+            mode: this.stateStorage.getStoredValueByKey('board', 'mode'),
+            level: this.state.level,
+            firstMove: this.stateStorage.getStoredValueByKey('board', 'xIsFirst') === "true" ? "X" : "O",
+            totalAmount: crossAmount + zeroAmount,
+            crossAmount: crossAmount,
+            zeroAmount: zeroAmount
+        });
+
+        window.localStorage.setItem('statistics', JSON.stringify(statistics));
     }
 
     renderSquare(i, index) {

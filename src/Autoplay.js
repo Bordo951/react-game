@@ -25,7 +25,7 @@ export default class Autoplay {
             randIndex = this.getRandomIntInclusive(firstIndex, lastIndex);
         }
 
-        if (randIndex) {
+        if (randIndex !== null) {
             document.querySelector("[data-square='" + randIndex + "']").click();
         }
 
@@ -35,6 +35,6 @@ export default class Autoplay {
     getRandomIntInclusive(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 }
