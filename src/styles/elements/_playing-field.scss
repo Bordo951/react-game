@@ -1,0 +1,38 @@
+.board-row:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.status {
+    text-align: center;
+    font-size: 1.5em;
+    margin: .5em 0;
+}
+
+.square {
+    background: $color-gray-square;
+    border: 3px solid $color-gray-8;
+    float: left;
+    font-size: 50px;
+    font-weight: bold;
+    color: $color-white;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 70px;
+    height: 70px;
+    line-height: 60px;
+
+    &:focus {
+        outline: 0;
+    }
+
+    &-tab {
+        background: $color-gray;
+    }
+}
+
+
+

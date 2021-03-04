@@ -1,0 +1,18 @@
+@import "styles/_normalize";
+
+//Variables
+@import "styles/variables/_colors";
+@import "styles/_main";
+
+//Pages
+@import "styles/pages/_game";
+@import "styles/pages/_about";
+@import "styles/pages/_settings";
+@import "styles/pages/_statistics";
+
+//Elements
+@import "styles/elements/_chips";
+@import "styles/elements/_playing-field";
+@import "styles/elements/_sound-on-off";
+@import "styles/elements/_scrollbar";
+@import "styles/elements/_animation";

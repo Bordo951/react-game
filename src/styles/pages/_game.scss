@@ -1,0 +1,47 @@
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__reset-btn {
+        color: $color-white;
+        font-weight: bold;
+        margin-top: 20px;
+        width: 150px;
+        height: 40px;
+        background: $color-gray;
+
+        &:focus {
+            outline: 0;
+        }
+
+        &:hover {
+            background: $color-gray-8;
+        }
+
+        &:active {
+            background: $color-gray;
+        }
+    }
+
+    .game-info {
+        margin-left: 20px;
+    }
+
+    .game-board {
+        margin: 0 auto;
+    }
+
+    .game-actions {
+        min-width: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+
+
+
+
+

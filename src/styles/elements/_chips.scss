@@ -1,0 +1,37 @@
+.chips {
+    &-cross__ {
+        &classic::before {
+            content: 'X';
+        }
+
+        &sushi {
+            background-image: url('../../images/roll.svg');
+            height: 64px;
+            background-size: cover;
+        }
+
+        &matrix {
+            background-image: url('../../images/pill-red.svg');
+            height: 64px;
+            background-size: cover;
+        }
+    }
+
+    &-zero__ {
+        &classic::before {
+            content: 'O';
+        }
+
+        &sushi {
+            background-image: url('../../images/nigiri.svg');
+            height: 64px;
+            background-size: cover;
+        }
+
+        &matrix {
+            background-image: url('../../images/pill-blue.svg');
+            height: 64px;
+            background-size: cover;
+        }
+    }
+}
